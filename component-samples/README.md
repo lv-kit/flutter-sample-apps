@@ -1,16 +1,29 @@
-# component_sample
+# Component Samples
 
-A new Flutter project.
+### package追加
 
-## Getting Started
+```shell
+flutter pub add [package name]
+flutter pub add --dev [package name]
+```
 
-This project is a starting point for a Flutter application.
+- FlutterFireを利用したFirebase設定でDartDefineの利用をやめるように変更
+- Bundle IDを `com.example` から `com.example.general` に変更
 
-A few resources to get you started if this is your first Flutter project:
+install
+```sh
+npm install -g firebase-tools
+dart pub global activate flutterfire_cli
+flutterfire configure
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+https://zenn.dev/nagaho/articles/012e9ac3b0dfd1
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### modelを変更したら実行する
+
+```shell
+flutter pub run build_runner build --delete-conflicting-outputs
+
+# watchをつけると、コードの変更を自動検知して生成する
+flutter packages pub run build_runner watch
+```

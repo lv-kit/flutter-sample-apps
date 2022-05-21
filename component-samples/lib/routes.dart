@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:component_sample/ui/screens/home_screen.dart';
 import 'package:component_sample/ui/screens/root.dart';
+import 'package:component_sample/ui/screens/slider_screen.dart';
 import 'package:component_sample/ui/screens/switch_screen.dart';
 
 @MaterialAutoRouter(
@@ -22,6 +23,11 @@ import 'package:component_sample/ui/screens/switch_screen.dart';
       path: 'Switch',
       name: 'SwitchRouter',
       page: SwitchScreen,
+    ),
+    AutoRoute<AutoRoute>(
+      path: 'Slider',
+      name: 'SliderRouter',
+      page: SliderScreen,
     ),
   ],
 )

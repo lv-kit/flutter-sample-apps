@@ -21,6 +21,10 @@ class RootScreen extends StatelessWidget {
             onTap: () => AutoRouter.of(context).push(const SliderRouter()),
             title: const Text("Slider View"),
           ),
+          ListTile(
+            onTap: () => AutoRouter.of(context).push(const ChipRouter()),
+            title: const Text("Chip View"),
+          ),
         ],
       ),
     );

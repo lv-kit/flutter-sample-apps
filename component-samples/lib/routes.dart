@@ -1,4 +1,9 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:component_sample/ui/screens/chip_screen.dart';
+import 'package:component_sample/ui/screens/chips/action_chip_screen.dart';
+import 'package:component_sample/ui/screens/chips/choice_chip_screen.dart';
+import 'package:component_sample/ui/screens/chips/filter_chip_screen.dart';
+import 'package:component_sample/ui/screens/chips/input_chip_screen.dart';
 import 'package:component_sample/ui/screens/home_screen.dart';
 import 'package:component_sample/ui/screens/root.dart';
 import 'package:component_sample/ui/screens/slider_screen.dart';
@@ -28,6 +33,31 @@ import 'package:component_sample/ui/screens/switch_screen.dart';
       path: 'Slider',
       name: 'SliderRouter',
       page: SliderScreen,
+    ),
+    AutoRoute<AutoRoute>(
+      path: 'Chip',
+      name: 'ChipRouter',
+      page: ChipScreen,
+    ),
+    AutoRoute<AutoRoute>(
+      path: 'InputChip',
+      name: 'InputChipRouter',
+      page: InputChipScreen,
+    ),
+    AutoRoute<AutoRoute>(
+      path: 'ChoiceChip',
+      name: 'ChoiceChipRouter',
+      page: ChoiceChipScreen,
+    ),
+    AutoRoute<AutoRoute>(
+      path: 'FilterChip',
+      name: 'FilterChipRouter',
+      page: FilterChipScreen,
+    ),
+    AutoRoute<AutoRoute>(
+      path: 'ActionChip',
+      name: 'ActionChipRouter',
+      page: ActionChipScreen,
     ),
   ],
 )

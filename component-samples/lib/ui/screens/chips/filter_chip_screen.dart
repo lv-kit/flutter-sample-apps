@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 
+class ChipData {
+  final int id;
+  final String name;
+  ChipData({required this.id, required this.name});
+}
+
 class FilterChipScreen extends StatefulWidget {
   const FilterChipScreen({Key? key}) : super(key: key);
 
@@ -8,7 +14,12 @@ class FilterChipScreen extends StatefulWidget {
 }
 
 class _FilterChipScreenState extends State<FilterChipScreen> {
-  Map values = <int, String>{};
+  final List<ChipData> _values = <ChipData>[
+    ChipData(id: 1, name: "Java"),
+    ChipData(id: 2, name: "Kotlin"),
+    ChipData(id: 3, name: "Objective-C"),
+    ChipData(id: 4, name: "Swift"),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -31,37 +42,40 @@ class _FilterChipScreenState extends State<FilterChipScreen> {
 
   Wrap createSelectedTag(BuildContext context) {
     return Wrap(
-      children: [],
+      children:
+          _values.map((chip) => createSelectedTagChip(context, chip)).toList(),
     );
   }
 
   Wrap createUnSelectedTag(BuildContext context) {
     return Wrap(
-      children: [],
+      children: _values
+          .map((chip) => createNotSelectedTagChip(context, chip))
+          .toList(),
     );
   }
 
-  InputChip createSelectedTagChip(
-      BuildContext context, String label, int index) {
+  InputChip createSelectedTagChip(BuildContext context, ChipData chip) {
     return InputChip(
-      label: Text(label),
+      label: Text(chip.name),
+      key: ValueKey(chip.id),
       deleteIcon: const Icon(Icons.close),
-      onDeleted: () {
-        setState(() {
-          values.remove(index);
-        });
-      },
+      onDeleted: () => setState(
+          () => _values.removeWhere((element) => element.id == chip.id)),
     );
   }
 
-  InputChip createNotSelectedTagChip(
-      BuildContext context, String label, int index) {
+  InputChip createNotSelectedTagChip(BuildContext context, ChipData chip) {
     return InputChip(
-      label: Text(label),
-      onSelected: (value) {
+      label: Text(chip.name),
+      onSelected: (bool selected) {
         setState(() {
-          var data = <int, String>{index: label};
-          values.addEntries(data.entries);
+          bool isInclude =
+              _values.contains(ChipData(id: chip.id, name: chip.name));
+          print(isInclude);
+          isInclude
+              ? null
+              : _values.add(ChipData(id: chip.id, name: chip.name));
         });
       },
     );
